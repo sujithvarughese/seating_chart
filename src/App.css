@@ -1,86 +1,205 @@
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --wedding-gold: #D4AF37;
+  --wedding-ivory: #FFFFF0;
+  --wedding-blush: #F8E8E8;
+  --wedding-rose: #E8A2A2;
+  --wedding-charcoal: #2C2C2C;
+  --wedding-sage: #8FA686;
+  --elegant-shadow: 0 8px 32px rgba(212, 175, 55, 0.1);
+  --soft-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, var(--wedding-ivory) 0%, #FEFEFE 100%);
+  font-family: 'Poppins', sans-serif;
+  color: var(--wedding-charcoal);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
 #root {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .seating-chart {
   min-height: 100vh;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 232, 232, 0.3) 100%);
+  border-radius: 20px;
+  box-shadow: var(--elegant-shadow);
+  overflow: hidden;
+  position: relative;
+  padding: 0 2rem;
+}
+
+/* Elegant decorative elements */
+.seating-chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--wedding-gold), var(--wedding-rose), var(--wedding-gold));
+}
+
+.seating-chart::after {
+  content: '💍';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  transform: rotate(15deg);
 }
 
 header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  position: relative;
 }
 
 h1 {
-  color: #2c3e50;
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 300;
+  color: var(--wedding-charcoal);
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--wedding-gold), var(--wedding-rose));
+  border-radius: 2px;
+}
+
+/* Subtitle styling */
+header p {
+  font-size: 1.2rem;
+  color: var(--wedding-sage);
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-family: 'Playfair Display', serif;
 }
 
 .search-container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
 .search-input {
   width: 100%;
-  padding: 1rem;
+  padding: 1.2rem 1.5rem;
   font-size: 1.1rem;
-  border: 2px solid #e1e8ed;
-  border-radius: 8px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: 'Poppins', sans-serif;
+  color: var(--wedding-charcoal);
+}
+
+.search-input::placeholder {
+  color: #B8B8B8;
+  font-style: italic;
 }
 
 .search-input:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  border-color: var(--wedding-gold);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+  background: white;
+  transform: translateY(-2px);
 }
 
 .results-info {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #7f8c8d;
+  margin-bottom: 2rem;
+  color: var(--wedding-sage);
   font-size: 1.1rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  display: inline-block;
+  box-shadow: var(--soft-shadow);
 }
 
 .seating-table {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  box-shadow: var(--soft-shadow);
+  border-radius: 15px;
   overflow: hidden;
-  background-color: white;
+  background: white;
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .seating-table th,
 .seating-table td {
-  padding: 1rem;
+  padding: 1.2rem 1.5rem;
   text-align: left;
-  border-bottom: 1px solid #ecf0f1;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .seating-table th {
-  background-color: #3498db;
+  background: linear-gradient(135deg, var(--wedding-gold), #C4A032);
   color: white;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.seating-table th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .seating-table td {
-  color: #2c3e50;
+  color: var(--wedding-charcoal);
   font-size: 1rem;
+  font-weight: 500;
+}
+
+.seating-table tbody tr {
+  transition: all 0.3s ease;
 }
 
 .seating-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, rgba(248, 232, 232, 0.8), rgba(255, 255, 255, 0.9));
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
 }
 
 .seating-table tbody tr:last-child td {
@@ -89,15 +208,64 @@ h1 {
 
 .no-results {
   text-align: center;
-  padding: 3rem;
-  color: #7f8c8d;
-  font-size: 1.2rem;
+  padding: 4rem 2rem;
+  color: var(--wedding-sage);
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .no-results p {
   margin: 0;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  border: 1px solid #e1e8ed;
+  padding: 2rem 3rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 232, 232, 0.5));
+  border-radius: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: var(--soft-shadow);
+  position: relative;
+}
+
+.no-results p::before {
+  content: '🌸';
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+main {
+  padding: 0 2rem 2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .seating-table th,
+  .seating-table td {
+    padding: 0.8rem 1rem;
+  }
+
+  .search-input {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .results-info {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
 }

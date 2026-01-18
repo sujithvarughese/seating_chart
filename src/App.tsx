@@ -33,6 +33,7 @@ function App() {
     <div className="seating-chart">
       <header>
         <h1>Wedding Seating Chart</h1>
+        <p>Find your perfect seat for our special day</p>
         <div className="search-container">
           <input
             type="text"
@@ -45,14 +46,6 @@ function App() {
       </header>
 
       <main>
-        <div className="results-info">
-          {filteredGuests.length === seatingData.length ? (
-            <p>Showing all {seatingData.length} guests</p>
-          ) : (
-            <p>Found {filteredGuests.length} guest{filteredGuests.length !== 1 ? 's' : ''} matching "{searchTerm}"</p>
-          )}
-        </div>
-
         {filteredGuests.length > 0 ? (
           <table className="seating-table">
             <thead>
