@@ -4,7 +4,7 @@ import seatingData from './assets/seatingchart.json'
 
 interface Guest {
   name: string;
-  table: number;
+  table: number | string | null;
 }
 
 function App() {
@@ -21,6 +21,13 @@ function App() {
       setFilteredGuests(filtered)
     }
   }, [searchTerm])
+
+  const formatTableDisplay = (table: number | string | null): string => {
+    if (table === null) {
+      return 'Not Assigned'
+    }
+    return table.toString()
+  }
 
   return (
     <div className="seating-chart">
@@ -58,7 +65,7 @@ function App() {
               {filteredGuests.map((guest: Guest, index: number) => (
                 <tr key={index}>
                   <td>{guest.name}</td>
-                  <td>{guest.table}</td>
+                  <td>{formatTableDisplay(guest.table)}</td>
                 </tr>
               ))}
             </tbody>
