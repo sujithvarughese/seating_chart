@@ -59,6 +59,7 @@ function App() {
       <header>
         <h1>Wedding Seating Chart</h1>
         <p>Find your perfect seat for our special day</p>
+        <p className="signature">Justin & Shaina</p>
         <div className="search-container">
           <input
             type="text"

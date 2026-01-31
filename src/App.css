@@ -1,5 +1,5 @@
 /* Import elegant fonts */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
   --wedding-gold: #d4af37;
@@ -149,6 +149,17 @@ header p {
   font-style: italic;
   margin: var(--space-xs) 0 var(--space-sm) 0;
   font-family: "Playfair Display", serif;
+}
+
+.signature {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.75rem;
+  color: var(--wedding-charcoal);
+  margin: 0 0 var(--space-md);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  opacity: 0.9;
+  line-height: 1.2;
 }
 
 .search-container {
@@ -331,6 +342,10 @@ main {
     font-size: 1.05rem;
   }
 
+  .signature {
+    font-size: 2rem;
+  }
+
   .search-container {
     padding: 0 var(--space-md);
     margin-bottom: var(--space-xl);
@@ -407,6 +422,10 @@ main {
 
   header p {
     font-size: 1.2rem;
+  }
+
+  .signature {
+    font-size: 2.25rem;
   }
 
   .search-container {
