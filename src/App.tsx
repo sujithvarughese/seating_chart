@@ -1,36 +1,61 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import seatingData from './assets/seatingchart.json'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 interface Guest {
-  name: string;
-  table: number | string | null;
+  firstName: string;
+  lastName: string;
+  tableNum: number | string | null;
+}
+
+function getFullName(guest: Guest): string {
+  return `${guest.firstName} ${guest.lastName}`.trim();
 }
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [filteredGuests, setFilteredGuests] = useState<Guest[]>(seatingData)
+  const [searchTerm, setSearchTerm] = useState("");
+  const [guests, setGuests] = useState<Guest[]>([]);
+  const [filteredGuests, setFilteredGuests] = useState<Guest[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (searchTerm.trim() === '') {
-      setFilteredGuests(seatingData)
-    } else {
-      const filtered = seatingData.filter((guest: Guest) =>
-        guest.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-      setFilteredGuests(filtered)
-    }
-  }, [searchTerm])
+    fetch("/seatingChart.json")
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to load seating chart");
+        return res.json();
+      })
+      .then((data: Guest[]) => {
+        setGuests(data);
+        setFilteredGuests(data);
+      })
+      .catch(err => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
 
-  const formatTableDisplay = (table: number | string | null): string => {
-    if (table === null) {
-      return 'Not Assigned'
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredGuests(guests);
+    } else {
+      const term = searchTerm.toLowerCase();
+      const filtered = guests.filter((guest: Guest) =>
+        getFullName(guest).toLowerCase().includes(term),
+      );
+      setFilteredGuests(filtered);
     }
-    return table.toString()
-  }
+  }, [searchTerm, guests]);
+
+  const formatTableDisplay = (tableNum: number | string | null): string => {
+    if (tableNum === null) {
+      return "Not Assigned";
+    }
+    return tableNum.toString();
+  };
 
   return (
     <div className="seating-chart">
+      <div className="banner">
+        <img src="/banner.jpeg" alt="Shaina & Justin" />
+      </div>
       <header>
         <h1>Wedding Seating Chart</h1>
         <p>Find your perfect seat for our special day</p>
@@ -39,14 +64,22 @@ function App() {
             type="text"
             placeholder="Search for a guest..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={e => setSearchTerm(e.target.value)}
             className="search-input"
           />
         </div>
       </header>
 
       <main>
-        {filteredGuests.length > 0 ? (
+        {loading ? (
+          <div className="no-results">
+            <p>Loading seating chart...</p>
+          </div>
+        ) : error ? (
+          <div className="no-results">
+            <p>{error}</p>
+          </div>
+        ) : filteredGuests.length > 0 ? (
           <table className="seating-table">
             <thead>
               <tr>
@@ -57,8 +90,8 @@ function App() {
             <tbody>
               {filteredGuests.map((guest: Guest, index: number) => (
                 <tr key={index}>
-                  <td>{guest.name}</td>
-                  <td>{formatTableDisplay(guest.table)}</td>
+                  <td>{getFullName(guest)}</td>
+                  <td>{formatTableDisplay(guest.tableNum)}</td>
                 </tr>
               ))}
             </tbody>
@@ -70,7 +103,7 @@ function App() {
         )}
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

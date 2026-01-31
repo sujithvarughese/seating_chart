@@ -1,15 +1,20 @@
 /* Import elegant fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
-  --wedding-gold: #D4AF37;
-  --wedding-ivory: #FFFFF0;
-  --wedding-blush: #F8E8E8;
-  --wedding-rose: #E8A2A2;
-  --wedding-charcoal: #2C2C2C;
-  --wedding-sage: #8FA686;
+  --wedding-gold: #d4af37;
+  --wedding-ivory: #fffff0;
+  --wedding-blush: #f8e8e8;
+  --wedding-rose: #e8a2a2;
+  --wedding-charcoal: #2c2c2c;
+  --wedding-sage: #8fa686;
   --elegant-shadow: 0 8px 32px rgba(212, 175, 55, 0.1);
   --soft-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
 }
 
 * {
@@ -17,8 +22,8 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--wedding-ivory) 0%, #FEFEFE 100%);
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--wedding-ivory) 0%, #fefefe 100%);
+  font-family: "Poppins", sans-serif;
   color: var(--wedding-charcoal);
   line-height: 1.6;
   margin: 0;
@@ -26,133 +31,181 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile first: even padding and margins */
 #root {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: var(--space-md);
+  font-family: "Poppins", sans-serif;
+  padding-left: max(var(--space-md), env(safe-area-inset-left));
+  padding-right: max(var(--space-md), env(safe-area-inset-right));
+  padding-bottom: max(var(--space-md), env(safe-area-inset-bottom));
 }
 
 .seating-chart {
   min-height: 100vh;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 232, 232, 0.3) 100%);
-  border-radius: 20px;
-  box-shadow: var(--elegant-shadow);
+  width: 100%;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 232, 232, 0.25) 100%
+  );
+  border-radius: 12px;
+  box-shadow: var(--soft-shadow);
   overflow: hidden;
   position: relative;
-  padding: 0 2rem;
+  padding: var(--space-md);
 }
 
-/* Elegant decorative elements */
 .seating-chart::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--wedding-gold), var(--wedding-rose), var(--wedding-gold));
+  background: linear-gradient(
+    90deg,
+    var(--wedding-gold),
+    var(--wedding-rose),
+    var(--wedding-gold)
+  );
 }
 
 .seating-chart::after {
-  content: '💍';
+  content: "💍";
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 1.5rem;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  font-size: 1.25rem;
   opacity: 0.3;
   transform: rotate(15deg);
 }
 
+.banner {
+  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) var(--space-sm)
+    calc(-1 * var(--space-md));
+  width: calc(100% + 2 * var(--space-md));
+  max-height: 200px;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  background: var(--wedding-blush);
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.banner::after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--wedding-gold),
+    var(--wedding-rose),
+    var(--wedding-gold)
+  );
+}
+
 header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem 0;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-sm) var(--space-sm) var(--space-lg);
   position: relative;
 }
 
 h1 {
   color: var(--wedding-charcoal);
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  margin: 0 0 var(--space-xs);
   font-weight: 600;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
 }
 
 h1::after {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: var(--space-xs);
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 56px;
   height: 3px;
   background: linear-gradient(90deg, var(--wedding-gold), var(--wedding-rose));
   border-radius: 2px;
 }
 
-/* Subtitle styling */
 header p {
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   color: var(--wedding-sage);
   font-style: italic;
-  margin-top: 0.5rem;
-  font-family: 'Playfair Display', serif;
+  margin: var(--space-xs) 0 var(--space-sm) 0;
+  font-family: "Playfair Display", serif;
 }
 
 .search-container {
-  max-width: 600px;
-  margin: 0 auto;
-  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 var(--space-lg);
+  padding: 0 var(--space-xs);
 }
 
 .search-input {
   width: 100%;
-  padding: 1.2rem 1.5rem;
-  font-size: 1.1rem;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  border-radius: 50px;
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 16px;
+  border: 2px solid rgba(212, 175, 55, 0.35);
+  border-radius: 999px;
   outline: none;
-  transition: all 0.3s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.9);
-  font-family: 'Poppins', sans-serif;
+  background: rgba(255, 255, 255, 0.95);
+  font-family: "Poppins", sans-serif;
   color: var(--wedding-charcoal);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .search-input::placeholder {
-  color: #B8B8B8;
+  color: #999;
   font-style: italic;
 }
 
 .search-input:focus {
   border-color: var(--wedding-gold);
-  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
-  background: white;
-  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
 .results-info {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-md);
+  padding: 0 var(--space-xs);
   color: var(--wedding-sage);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  display: inline-block;
-  box-shadow: var(--soft-shadow);
+}
+
+main {
+  padding: 0 0 var(--space-lg);
+  width: 100%;
 }
 
 .seating-table {
   width: 100%;
   border-collapse: collapse;
   box-shadow: var(--soft-shadow);
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
   background: white;
   border: 1px solid rgba(212, 175, 55, 0.2);
@@ -160,24 +213,24 @@ header p {
 
 .seating-table th,
 .seating-table td {
-  padding: 1.2rem 1.5rem;
+  padding: var(--space-sm) var(--space-md);
   text-align: left;
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .seating-table th {
-  background: linear-gradient(135deg, var(--wedding-gold), #C4A032);
+  background: linear-gradient(135deg, var(--wedding-gold), #c4a032);
   color: white;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.85rem;
-  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  font-family: "Poppins", sans-serif;
   position: relative;
 }
 
 .seating-table th::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -188,18 +241,16 @@ header p {
 
 .seating-table td {
   color: var(--wedding-charcoal);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
 .seating-table tbody tr {
-  transition: all 0.3s ease;
+  transition: background 0.2s ease;
 }
 
-.seating-table tbody tr:hover {
-  background: linear-gradient(135deg, rgba(248, 232, 232, 0.8), rgba(255, 255, 255, 0.9));
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+.seating-table tbody tr:active {
+  background: rgba(248, 232, 232, 0.4);
 }
 
 .seating-table tbody tr:last-child td {
@@ -208,64 +259,235 @@ header p {
 
 .no-results {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: var(--space-xl) var(--space-sm);
   color: var(--wedding-sage);
-  font-size: 1.3rem;
-  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-family: "Playfair Display", serif;
   font-style: italic;
 }
 
 .no-results p {
   margin: 0;
-  padding: 2rem 3rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 232, 232, 0.5));
-  border-radius: 15px;
+  padding: var(--space-lg) var(--space-xl);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 232, 232, 0.4)
+  );
+  border-radius: 12px;
   border: 1px solid rgba(212, 175, 55, 0.2);
   box-shadow: var(--soft-shadow);
   position: relative;
+  font-size: 0.95rem;
 }
 
 .no-results p::before {
-  content: '🌸';
+  content: "🌸";
   position: absolute;
-  top: -15px;
-  left: 20px;
-  font-size: 1.5rem;
+  top: -0.5rem;
+  left: 1rem;
+  font-size: 1.25rem;
   opacity: 0.7;
 }
 
-main {
-  padding: 0 2rem 2rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
+/* Tablet: even spacing */
+@media (min-width: 480px) {
   #root {
-    padding: 1rem;
+    padding: var(--space-lg);
+    padding-left: max(var(--space-lg), env(safe-area-inset-left));
+    padding-right: max(var(--space-lg), env(safe-area-inset-right));
   }
 
-  h1 {
-    font-size: 2.5rem;
+  .seating-chart {
+    padding: var(--space-lg);
+    border-radius: 16px;
   }
 
-  .seating-table th,
-  .seating-table td {
-    padding: 0.8rem 1rem;
+  .banner {
+    margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg))
+      var(--space-md) calc(-1 * var(--space-lg));
+    width: calc(100% + 2 * var(--space-lg));
+    border-radius: 16px 16px 0 0;
   }
 
-  .search-input {
-    padding: 1rem;
-    font-size: 1rem;
+  .banner img {
+    max-height: 240px;
   }
-}
 
-@media (max-width: 480px) {
+  header {
+    padding: var(--space-md) var(--space-md) var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+
   h1 {
     font-size: 2rem;
   }
 
-  .results-info {
+  h1::after {
+    width: 64px;
+  }
+
+  header p {
+    font-size: 1.05rem;
+  }
+
+  .search-container {
+    padding: 0 var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  main {
+    padding-bottom: var(--space-xl);
+  }
+
+  .seating-table th,
+  .seating-table td {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .seating-table td {
     font-size: 1rem;
-    padding: 0.8rem 1.5rem;
+  }
+
+  .no-results {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .no-results p {
+    padding: var(--space-xl) var(--space-xl);
+  }
+}
+
+/* Desktop: centered layout, even spacing */
+@media (min-width: 768px) {
+  #root {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    padding-left: max(var(--space-xl), env(safe-area-inset-left));
+    padding-right: max(var(--space-xl), env(safe-area-inset-right));
+  }
+
+  .seating-chart {
+    border-radius: 20px;
+    box-shadow: var(--elegant-shadow);
+    padding: var(--space-xl);
+  }
+
+  .banner {
+    margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-xl))
+      var(--space-lg) calc(-1 * var(--space-xl));
+    width: calc(100% + 2 * var(--space-xl));
+    border-radius: 20px 20px 0 0;
+  }
+
+  .banner img {
+    max-height: 280px;
+  }
+
+  .seating-chart::after {
+    top: var(--space-lg);
+    right: var(--space-lg);
+    font-size: 1.5rem;
+  }
+
+  header {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  }
+
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  h1::after {
+    width: 80px;
+    bottom: calc(-1 * var(--space-sm));
+  }
+
+  header p {
+    font-size: 1.2rem;
+  }
+
+  .search-container {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .search-input {
+    padding: var(--space-md) var(--space-lg);
+    font-size: 1.05rem;
+  }
+
+  .search-input:focus {
+    transform: translateY(-1px);
+  }
+
+  main {
+    padding: 0 0 var(--space-xl);
+  }
+
+  .seating-table {
+    border-radius: 15px;
+    box-shadow: var(--soft-shadow);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .seating-table th,
+  .seating-table td {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .seating-table th {
+    font-size: 0.85rem;
+  }
+
+  .seating-table td {
+    font-size: 1rem;
+  }
+
+  .seating-table tbody tr:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(248, 232, 232, 0.8),
+      rgba(255, 255, 255, 0.9)
+    );
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+  }
+
+  .seating-table tbody tr:active {
+    background: inherit;
+  }
+
+  .no-results {
+    padding: var(--space-xl) var(--space-lg);
+    font-size: 1.2rem;
+  }
+
+  .no-results p {
+    margin: 0;
+    padding: var(--space-xl) var(--space-xl);
+    font-size: 1.1rem;
+  }
+
+  .results-info {
+    font-size: 1.1rem;
+    padding: 0 var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.25rem;
+  }
+
+  .seating-table th,
+  .seating-table td {
+    padding: var(--space-md) var(--space-lg);
   }
 }
